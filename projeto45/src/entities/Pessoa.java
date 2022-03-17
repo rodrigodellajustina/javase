@@ -12,6 +12,7 @@ public class Pessoa {
     private int idade;
     private double altura;
     private String telefone;
+    private String teste;
 
     // Construtor
     public Pessoa(String nome, int idade, double altura, String telefone){
