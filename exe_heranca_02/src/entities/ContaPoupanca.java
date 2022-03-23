@@ -26,8 +26,12 @@ public class ContaPoupanca extends Conta{
 
     }
 
+    public static Integer getExemploStatico(){
+        return 1;
+    }
+
     @Override
-    public void qualeclasse(){
+    public  void qualeclasse(){
         System.out.println("ContaPoupanca");
     }
 
