@@ -24,7 +24,10 @@ public class Main {
         }catch (ArrayIndexOutOfBoundsException e){
             System.out.println("Posição do Array não existe");
             e.printStackTrace();
+        }finally {
+            sc.close();
         }
+
 
         System.out.println("Fim :: metodo02");
 
