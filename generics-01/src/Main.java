@@ -1,3 +1,4 @@
+import entities.Pessoa;
 import entities.Servicos;
 
 public class Main {
@@ -21,6 +22,20 @@ public class Main {
 
         Integer b = servicos1.primeiroElemento();
         System.out.println(b);
+
+        /*Pessoa*/
+        Servicos<Pessoa> service2 = new Servicos<>();
+        Pessoa pe1 = new Pessoa();
+        pe1.setNome("Rodrigo");
+        pe1.setCidade("Curitiba");
+        service2.addValor(pe1);
+
+        Pessoa c = service2.primeiroElemento();
+        System.out.println(c.getNome());
+
+
+
+
 
     }
 
