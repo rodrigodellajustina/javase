@@ -1,5 +1,4 @@
 package db;
-
 import entities.Pessoa;
 
 import java.sql.*;
