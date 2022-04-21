@@ -21,9 +21,11 @@ public class SQLite {
     /*Método responsável por inserir os dados na tabela pessoa*/
     public void insertPessoa(Pessoa pessoa){
         try {
-            this.stm = this.conn.createStatement();
-
-            this.stm.executeUpdate("insert into pessoa (nome, sobrenome, idade) VALUES ('"+pessoa.getNome()+"', '"+pessoa.getSobrenome()+"', "+pessoa.getIdade()+")");
+            if (!this.checkPessoa(pessoa)){
+                this.stm = this.conn.createStatement();
+                String cmdSQL = "insert into pessoa (nome, sobrenome, idade, cpf) VALUES ('"+pessoa.getNome()+"', '"+pessoa.getSobrenome()+"', "+pessoa.getIdade()+ ", '"+pessoa.getCpf()+"')";
+                this.stm.executeUpdate(cmdSQL);
+            }
 
         }catch (SQLException e){
             e.printStackTrace();
@@ -54,6 +56,70 @@ public class SQLite {
         return listaPessoa;
 
     }
+
+    //Método para verificar se o CPF está registrado no banco de dados
+    private boolean checkPessoa(Pessoa pessoa){
+        List<Pessoa> listaPessoa = new ArrayList<>();
+
+        try{
+            ResultSet resultset ;
+            resultset = this.stm.executeQuery("select * from pessoa where  CPF = '"+pessoa.getCpf()+"'");
+
+            while(resultset.next()){
+                listaPessoa.add(new Pessoa(resultset.getString("nome"), resultset.getString("sobrenome"), resultset.getInt("idade")));
+            }
+
+            if (listaPessoa.size() >= 1){
+                return true;
+            }else{
+                return false;
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        return false;
+
+    }
+
+    // Método para atualizar dados de uma pessoa
+    public void updatePessoa(Pessoa pessoa){
+        try{
+
+            if (this.checkPessoa(pessoa)){
+                this.stm = this.conn.createStatement();
+                String cmdUpdate = "update " +
+                                   "    pessoa " +
+                                   "set " +
+                                   "    idade     = "+pessoa.getIdade()+", " +
+                                   "    nome      = '"+pessoa.getNome()+"', " +
+                                   "    sobrenome = '"+pessoa.getSobrenome()+"' " +
+                                   "where " +
+                                   "    cpf = '"+pessoa.getCpf()+"'";
+                this.stm.executeUpdate(cmdUpdate);
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    //Eliminar objeto pessoa dentro do banco de dados
+    public void eliminarPessoa(Pessoa pessoa){
+        try{
+            this.stm = this.conn.createStatement();
+            String cmdDelete = "delete from pessoa where CPF = '"+pessoa.getCpf()+"'";
+            this.stm.executeUpdate(cmdDelete);
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+
+    }
+
+
 
 
 
