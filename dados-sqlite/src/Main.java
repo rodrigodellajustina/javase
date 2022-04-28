@@ -57,23 +57,16 @@ public class Main {
             //System.out.println(prd1.getDescricao());
 
             if (dbcon.checkProduto(prd1)){
-                //System.out.println("Esse Produto Já existe");
+                System.out.println("Esse Produto Já existe");
             }else{
-                //System.out.println("Esse Produto NÃO existe");
+                System.out.println("Esse Produto NÃO existe");
             }
 
             dbcon.insertProduto(prd1);
             //dbcon.insertProdutoCheck(prd1);
 
 
-            List<Produto> listaProdutoTeste = new ArrayList<>();
-            System.out.println(listaProdutoTeste.size());
 
-            listaProdutoTeste.add(prd1);
-            listaProdutoTeste.add(prd1);
-            listaProdutoTeste.add(prd1);
-
-            System.out.println(listaProdutoTeste.size());
 
 
 
