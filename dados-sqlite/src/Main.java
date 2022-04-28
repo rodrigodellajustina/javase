@@ -1,6 +1,8 @@
 import db.SQLite;
 import entities.Pessoa;
+import entities.Produto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -8,6 +10,9 @@ public class Main {
     public static void main(String[] args){
         try {
             SQLite dbcon = new SQLite();
+            /*
+
+            PESSOA:
 
             System.out.println("Inserindo Pessoas na tabela");
             dbcon.insertPessoa(new Pessoa("Rodrigo", "Della Justina", 39, "4838828228284"));
@@ -40,6 +45,37 @@ public class Main {
             for(Pessoa people : dbcon.getAllPessoas()){
                 System.out.println(people.getNome() + " | " + people.getSobrenome() + " | " + people.getIdade());
             }
+
+             */
+
+            //PRODUTO
+
+            Produto prd1 = new Produto();
+            prd1.setDescricao("Coca-Cola Lata 299 ml");
+            prd1.setCodbarra("72387827382");
+            prd1.setPreco(4.21);
+            //System.out.println(prd1.getDescricao());
+
+            if (dbcon.checkProduto(prd1)){
+                //System.out.println("Esse Produto Já existe");
+            }else{
+                //System.out.println("Esse Produto NÃO existe");
+            }
+
+            dbcon.insertProduto(prd1);
+            //dbcon.insertProdutoCheck(prd1);
+
+
+            List<Produto> listaProdutoTeste = new ArrayList<>();
+            System.out.println(listaProdutoTeste.size());
+
+            listaProdutoTeste.add(prd1);
+            listaProdutoTeste.add(prd1);
+            listaProdutoTeste.add(prd1);
+
+            System.out.println(listaProdutoTeste.size());
+
+
 
 
         }catch (Exception e){

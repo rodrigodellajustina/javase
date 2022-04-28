@@ -1,5 +1,6 @@
 package db;
 import entities.Pessoa;
+import entities.Produto;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -119,6 +120,85 @@ public class SQLite {
 
     }
 
+    // 4 métodos
+    // inserirProduto
+    public void insertProduto(Produto produto){
+        try {
+            if (!this.checkProduto(produto)) {
+                this.stm = this.conn.createStatement();
+                String cmdSQLInsertProduto = "insert into produto" +
+                        "(codbarra, descricao, preco) " +
+                        "values" +
+                        "('" + produto.getCodbarra() + "', '" + produto.getDescricao() + "', '" + produto.getPreco() + "')";
+
+                this.stm.executeUpdate(cmdSQLInsertProduto);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    //InsereProdutoCheck
+    public void insertProdutoCheck(Produto produto){
+        try {
+            this.stm = this.conn.createStatement();
+            String cmdSQLInsertProduto = "insert into produto(codbarra, descricao, preco) " +
+                                         "select" +
+                                         "'"+produto.getCodbarra()+"' as codbarra, " +
+                                         "'"+produto.getDescricao()+"' as descricao, " +
+                                         "'"+produto.getPreco()+"' as preco " +
+                                         "where " +
+                                         "not exists(select * from produto where codbarra = '"+produto.getCodbarra()+"' )";
+
+            this.stm.executeUpdate(cmdSQLInsertProduto);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public boolean checkProduto(Produto produto){
+        List<Produto> listaProduto = new ArrayList<>();
+
+        try{
+            ResultSet resultset ;
+            resultset = this.stm.executeQuery("select * from produto where  codbarra = '"+produto.getCodbarra()+"'");
+
+            while(resultset.next()){
+                Produto produto1 = new Produto();
+                produto1.setCodbarra(resultset.getString("codbarra"));
+                produto1.setDescricao(resultset.getString("descricao"));
+                produto1.setPreco(Double.valueOf(resultset.getString("preco")));
+                listaProduto.add(produto1);
+            }
+
+            if (listaProduto.size() >= 1){
+                return true;
+            }else{
+                return false;
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        return false;
+
+    }
+
+
+
+
+    // atualizarPreco
+    // listarProdutos
+    // eliminarProduto... eliminar pelo codigo de barras
+    // busca textual de Produto PASSAR BUSCA e não objeto do PRODUTO
+    // copiar Produto ... cria um novo PRODUTO com a mesma descrição o mesmo preço, porém
+    ///                   com um novo código de barras...
+
+    /// Categoria de Produtos...
+    // Classe espeifica para tratar Categoria (codigo, nome, margem de lucro)
+
+    //
 
 
 
