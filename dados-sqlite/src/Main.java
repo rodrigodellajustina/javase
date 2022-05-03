@@ -51,10 +51,10 @@ public class Main {
             //PRODUTO
 
             Produto prd1 = new Produto();
-            prd1.setDescricao("Coca-Cola Lata 299 ml");
-            prd1.setCodbarra("72387827382");
-            prd1.setPreco(4.21);
-            //System.out.println(prd1.getDescricao());
+            prd1.setDescricao("Fanta Laranja 300 ml");
+            prd1.setCodbarra("7876238172");
+            prd1.setPreco(6.21);
+            dbcon.insertProduto(prd1);
 
             if (dbcon.checkProduto(prd1)){
                 System.out.println("Esse Produto Já existe");
@@ -62,8 +62,47 @@ public class Main {
                 System.out.println("Esse Produto NÃO existe");
             }
 
-            dbcon.insertProduto(prd1);
-            //dbcon.insertProdutoCheck(prd1);
+            /*Atualizando Preço*/
+            System.out.println("Atualizando Preço do Produto");
+            Produto prdUpd = new Produto();
+            prdUpd.setDescricao("Coca-Cola Lata 350 ml");
+            prdUpd.setCodbarra("87578457872");
+            prdUpd.setPreco(2.50);
+            dbcon.insertProduto(prdUpd);
+
+            /*Listando Produtos*/
+            /*
+            System.out.println("Listando Produtos");
+            for(Produto produto : dbcon.getAllProdutos("")){
+                System.out.println(produto.getCodbarra() + " | " + produto.getDescricao() + " | R$ " + produto.getPreco());
+            }
+            */
+
+
+
+            //dbcon.deleteProduto(prdUpd);
+
+            /*Listando Após a Eliminação*/
+            /*
+            System.out.println("Listando Produtos após delete");
+            for(Produto produto : dbcon.getAllProdutos("")){
+                System.out.println(produto.getCodbarra() + " | " + produto.getDescricao() + " | R$ " + produto.getPreco());
+            }
+            */
+
+
+            /*Listando COM FILTRO*/
+            System.out.println("Listando Produtos");
+            for(Produto produto : dbcon.getAllProdutos("2 litros")){
+                System.out.println(produto.getCodbarra() + " | " + produto.getDescricao() + " | R$ " + produto.getPreco());
+            }
+
+            Produto prdCopia = new Produto();
+            prdCopia.setCodbarra("78485485235");
+            prdCopia.setDescricao("Coca-Cola 2 Litros");
+            prdCopia.setPreco(13.5);
+
+            dbcon.copiaProduto(prdCopia, "79485485235");
 
 
 

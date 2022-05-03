@@ -116,8 +116,6 @@ public class SQLite {
         }catch (SQLException e){
             e.printStackTrace();
         }
-
-
     }
 
     // 4 métodos
@@ -156,6 +154,19 @@ public class SQLite {
         }
     }
 
+    //InsereProdutoCheck
+    public void deleteProduto(Produto produto){
+        try {
+            this.stm = this.conn.createStatement();
+            String cmdSQLInsertProduto = "delete from produto " +
+                                         "where codbarra = '"+produto.getCodbarra()+"'";
+
+            this.stm.executeUpdate(cmdSQLInsertProduto);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
     public boolean checkProduto(Produto produto){
         List<Produto> listaProduto = new ArrayList<>();
 
@@ -185,20 +196,98 @@ public class SQLite {
 
     }
 
+    public void updatePrice(Produto produto){
+        try {
+            this.stm = this.conn.createStatement();
+            String updatePrice = "update " +
+                                 "    produto " +
+                                 "set" +
+                                 "    preco = '"+produto.getPreco()+"'" +
+                                 "where " +
+                                 "  codbarra = '"+produto.getCodbarra()+"'";
+            this.stm.executeUpdate(updatePrice);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+
+    /*Sobrecarga*/
+
+    public List<Produto> getAllProdutos(){
+        return getAllProdutos("");
+    }
+
+    public List<Produto> getAllProdutos(String busca){
+        List<Produto> listProduto = new ArrayList<>();
+        ResultSet rsProduto;
+
+        try {
+            if (busca.equals("")){
+                rsProduto = this.stm.executeQuery("select * from produto order by preco desc");
+            }else{
+                String sqlProduto = "select * from produto where descricao like '%"+busca+"%' order by preco desc";
+                rsProduto = this.stm.executeQuery(sqlProduto);
+            }
+
+
+            while (rsProduto.next()){
+                Produto prdLista = new Produto();
+                prdLista.setCodbarra(rsProduto.getString("codbarra"));
+                prdLista.setDescricao(rsProduto.getString("descricao"));
+                prdLista.setPreco(rsProduto.getDouble("preco"));
+                listProduto.add(prdLista);
+            }
+
+            rsProduto.close();
+
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        return listProduto;
+    }
 
 
 
-    // atualizarPreco
-    // listarProdutos
-    // eliminarProduto... eliminar pelo codigo de barras
-    // busca textual de Produto PASSAR BUSCA e não objeto do PRODUTO
-    // copiar Produto ... cria um novo PRODUTO com a mesma descrição o mesmo preço, porém
-    ///                   com um novo código de barras...
+
+    public void eliminarProduto(Produto produto){
+        try{
+            this.stm = this.conn.createStatement();
+            String deleteProduto = "delete from produto where codbarra = '"+produto.getCodbarra()+"'";
+            this.stm.executeUpdate(deleteProduto);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+
+    //InsereProdutoCheck
+    public void copiaProduto(Produto produto, String codbarra){
+        try {
+            this.stm = this.conn.createStatement();
+            String cmdSQLInsertProduto = "insert into produto " +
+                                        "select " +
+                                        "'"+codbarra+"' as codbarra, " +
+                                        "descricao, " +
+                                        "preco " +
+                                        "from produto " +
+                                        "where " +
+                                        "codbarra = '"+produto.getCodbarra()+"'";
+
+            //System.out.println(cmdSQLInsertProduto);
+            this.stm.executeUpdate(cmdSQLInsertProduto);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
 
     /// Categoria de Produtos...
     // Classe espeifica para tratar Categoria (codigo, nome, margem de lucro)
 
-    //
+
 
 
 
