@@ -5,6 +5,15 @@ public class Cadastros {
     private String email;
     private String senha;
 
+    public Cadastros(String nome, String email){
+        this.nome = nome;
+        this.email = email;
+    }
+
+    public Cadastros(){
+
+    }
+
     public String getNome() {
         return nome;
     }

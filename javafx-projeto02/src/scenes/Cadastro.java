@@ -29,6 +29,8 @@ public class Cadastro extends Application {
         HBox hbsenha = new HBox(tfsenha);
         Button btConfirmar = new Button("Confirmar");
         HBox hbconfirmar = new HBox(btConfirmar);
+        Button btListarUsuario = new Button("Listar");
+        HBox hbListar = new HBox(btListarUsuario);
         Alert alertConfirmar = new Alert(Alert.AlertType.INFORMATION, "Usuário Confirmado");
 
 
@@ -41,6 +43,7 @@ public class Cadastro extends Application {
         tpCadastro.getChildren().add(lbsenha);
         tpCadastro.getChildren().add(hbsenha);
         tpCadastro.getChildren().add(btConfirmar);
+        tpCadastro.getChildren().add(btListarUsuario);
 
         EventHandler<ActionEvent> eventoConfirmar = new EventHandler<ActionEvent>() {
             @Override
@@ -57,16 +60,31 @@ public class Cadastro extends Application {
                     e.printStackTrace();
                 }
 
-
                 alertConfirmar.show();
                 tfnome.clear();
                 tfemail.clear();
                 tfsenha.clear();
+
+
+
+            }
+        };
+
+        EventHandler<ActionEvent> eventoListar = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                CadastroListar cadastroListar = new CadastroListar();
+                try {
+                    cadastroListar.start(new Stage());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         };
 
 
         btConfirmar.setOnAction(eventoConfirmar);
+        btListarUsuario.setOnAction(eventoListar);
 
 
         Scene scCadastro = new Scene(tpCadastro, 400, 400);

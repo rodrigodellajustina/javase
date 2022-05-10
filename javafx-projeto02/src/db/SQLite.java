@@ -29,5 +29,26 @@ public class SQLite {
         }
     }
 
+    public List<Cadastros> getUsuarios(){
+        List<Cadastros> listUsuario = new ArrayList<>();
+        ResultSet resultsetUsuario;
+
+        try{
+            resultsetUsuario = this.stm.executeQuery("select Upper(nome) as nome , email from usuario order by nome asc");
+
+            while(resultsetUsuario.next()){
+                listUsuario.add(new Cadastros(resultsetUsuario.getString("nome"), resultsetUsuario.getString("email")));
+            }
+
+            resultsetUsuario.close();
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        return listUsuario;
+    }
+
+
 
 }
