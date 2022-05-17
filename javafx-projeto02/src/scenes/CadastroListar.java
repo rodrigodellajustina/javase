@@ -61,7 +61,9 @@ public class CadastroListar extends Application {
                     Object usuarioEliminar = tableUsuario.getSelectionModel().getSelectedItems().get(0);
                     Cadastros eliminarCadastro = new Cadastros();
                     String email = ((Cadastros) usuarioEliminar).getEmail();
+                    String nome  = ((Cadastros) usuarioEliminar).getNome();
                     eliminarCadastro.setEmail(email);
+                    eliminarCadastro.setNome(nome);
 
                     try {
                         SQLite dbUsuarios = new SQLite();

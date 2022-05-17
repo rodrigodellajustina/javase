@@ -34,6 +34,11 @@ public class SQLite {
             this.stm = this.conn.createStatement();
             String eliminarUsuario = "delete from usuario where email = '"+cadastro.getEmail()+"'";
             this.stm.executeUpdate(eliminarUsuario);
+
+            this.stm = this.conn.createStatement();
+            String insertUsuarioEliminado = "insert into usuario_eliminado (nome, email) values ('"+cadastro.getNome()+"', '"+cadastro.getEmail()+"')";
+            this.stm.executeUpdate(insertUsuarioEliminado);
+
         }catch (SQLException e){
             e.printStackTrace();
         }
