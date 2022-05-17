@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 
 import java.sql.ClientInfoStatus;
 import java.sql.SQLException;
+import java.time.format.DateTimeFormatter;
 
 public class Cadastro extends Application {
 
@@ -33,8 +34,6 @@ public class Cadastro extends Application {
         HBox hbListar = new HBox(btListarUsuario);
         Alert alertConfirmar = new Alert(Alert.AlertType.INFORMATION, "Usuário Confirmado");
 
-
-
         TilePane tpCadastro = new TilePane();
         tpCadastro.getChildren().add(lbnome);
         tpCadastro.getChildren().add(hbnome);
@@ -44,6 +43,7 @@ public class Cadastro extends Application {
         tpCadastro.getChildren().add(hbsenha);
         tpCadastro.getChildren().add(btConfirmar);
         tpCadastro.getChildren().add(btListarUsuario);
+
 
         EventHandler<ActionEvent> eventoConfirmar = new EventHandler<ActionEvent>() {
             @Override

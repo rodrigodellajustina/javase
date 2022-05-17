@@ -1,3 +1,5 @@
+import entitites.Cadastros;
+import entitites.Produto;
 import scenes.Cadastro;
 import scenes.CadastroListar;
 

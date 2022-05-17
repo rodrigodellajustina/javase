@@ -29,12 +29,48 @@ public class SQLite {
         }
     }
 
+    public void eliminarUsuario(Cadastros cadastro){
+        try{
+            this.stm = this.conn.createStatement();
+            String eliminarUsuario = "delete from usuario where email = '"+cadastro.getEmail()+"'";
+            this.stm.executeUpdate(eliminarUsuario);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+    }
+
+
     public List<Cadastros> getUsuarios(){
         List<Cadastros> listUsuario = new ArrayList<>();
         ResultSet resultsetUsuario;
 
         try{
             resultsetUsuario = this.stm.executeQuery("select Upper(nome) as nome , email from usuario order by nome asc");
+
+            while(resultsetUsuario.next()){
+                listUsuario.add(new Cadastros(resultsetUsuario.getString("nome"), resultsetUsuario.getString("email")));
+            }
+
+            resultsetUsuario.close();
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        return listUsuario;
+    }
+
+
+    public List<Cadastros> getUsuariosFiltro(String buscaemail){
+        List<Cadastros> listUsuario = new ArrayList<>();
+        ResultSet resultsetUsuario;
+
+        try{
+            resultsetUsuario = this.stm.executeQuery("select Upper(nome) as nome , email " +
+                                                     "from usuario " +
+                                                     "where email like '%"+buscaemail+"%' " +
+                                                     "order by nome asc ");
 
             while(resultsetUsuario.next()){
                 listUsuario.add(new Cadastros(resultsetUsuario.getString("nome"), resultsetUsuario.getString("email")));
