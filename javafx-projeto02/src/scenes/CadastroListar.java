@@ -9,6 +9,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
@@ -17,13 +18,16 @@ import javafx.stage.Stage;
 import javax.swing.*;
 import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 
 public class CadastroListar extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         /*Declaração da Table View*/
         TableView tableUsuario = new TableView();
-        Alert alertEliminar = new Alert(Alert.AlertType.INFORMATION, "Eliminação de Usuário");
+        Alert alertEliminar   = new Alert(Alert.AlertType.INFORMATION, "Eliminação de Usuário");
+        Alert alertAlteracao  = new Alert(Alert.AlertType.CONFIRMATION, "Deseja alterar o usuário");
+        Alert alertConfirmacaoAlteracao = new Alert(Alert.AlertType.INFORMATION, "Senha alterado com sucesso");
         Label lbFiltro = new Label("Pesquisa");
         TextField tfFiltro = new TextField();
         Button btFiltrar = new Button("Pesquisa");
@@ -84,6 +88,8 @@ public class CadastroListar extends Application {
             }
         };
 
+
+
         EventHandler<ActionEvent> eventoFiltrar = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -123,6 +129,52 @@ public class CadastroListar extends Application {
         btEliminar.setOnAction(eventoEliminar);
         btFiltrar.setOnAction(eventoFiltrar);
         btMostrarTodos.setOnAction(eventoMostrarTodos);
+
+
+        tableUsuario.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+
+                if (event.getClickCount() > 1){
+                    Optional<ButtonType> result = alertAlteracao.showAndWait();
+                    ButtonType btnClicou = result.orElse(ButtonType.CANCEL);
+
+                    if (btnClicou == ButtonType.OK){
+                        System.out.println("Clicou no Ok");
+                        TextInputDialog dialog = new TextInputDialog("Informe nova senha");
+                        dialog.setTitle("Informe sua nova senha");
+                        dialog.setContentText("Aqui, informe sua nova senha");
+                        Optional<String> textoSenha = dialog.showAndWait();
+
+                        if (textoSenha.isPresent()){
+                            System.out.println("Senha Digitada " + textoSenha.get());
+
+                            /*Armazenar a senha no banco de dados*/
+                            Object usuarioAlteracao = tableUsuario.getSelectionModel().getSelectedItems().get(0);
+                            Cadastros alterarCadastro = new Cadastros();
+                            String email = ((Cadastros) usuarioAlteracao).getEmail();
+                            String novasenha = textoSenha.get();
+                            alterarCadastro.setEmail(email);
+                            alterarCadastro.setSenha(novasenha);
+
+                            try{
+                                SQLite dbUsuario = new SQLite();
+                                dbUsuario.alterarSenhaUsuario(alterarCadastro);
+                                alertConfirmacaoAlteracao.setContentText("Senha do usuário " + email + " alterada com sucesso");
+                                alertConfirmacaoAlteracao.show();
+                            }catch (SQLException | ClassNotFoundException e){
+                                e.printStackTrace();
+                            }
+
+                        }
+
+
+                    }
+                }
+
+            }
+        });
+
 
         TilePane tpCadastroListar = new TilePane();
         VBox vbox = new VBox(tableUsuario);

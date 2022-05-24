@@ -45,6 +45,21 @@ public class SQLite {
 
     }
 
+    public void alterarSenhaUsuario(Cadastros usuario){
+        try{
+            this.stm = this.conn.createStatement();
+            String updateSenha = "update " +
+                                 "   usuario " +
+                                 "set " +
+                                 "    senha = '"+usuario.getSenha()+"' " +
+                                 "where  " +
+                                 "    email = '"+usuario.getEmail()+"'";
+            this.stm.executeUpdate(updateSenha);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
 
     public List<Cadastros> getUsuarios(){
         List<Cadastros> listUsuario = new ArrayList<>();
