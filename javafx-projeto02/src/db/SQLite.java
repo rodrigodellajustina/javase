@@ -106,5 +106,27 @@ public class SQLite {
     }
 
 
+    public boolean usuarioLogin(Cadastros usuario){
+
+        List<Cadastros> listUsuarioLogin = new ArrayList<>();
+        ResultSet resultUsuarioLogin;
+
+        try{
+            resultUsuarioLogin = this.stm.executeQuery("select * from usuario \n" +
+                                                       "where email = '"+usuario.getEmail()+"' and senha = '"+usuario.getSenha()+"'");
+
+            while(resultUsuarioLogin.next()){
+                resultUsuarioLogin.close();
+                return true;
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+
 
 }
