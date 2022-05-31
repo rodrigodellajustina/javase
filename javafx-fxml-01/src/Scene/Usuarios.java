@@ -1,6 +1,7 @@
 package Scene;
 
 import Controller.LoginController;
+import Controller.UsuariosController;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,8 +14,11 @@ public class Usuarios extends Application {
     public void start(Stage stage) throws Exception {
         FXMLLoader loaderUsuario = new FXMLLoader(this.getClass().getResource("layoutUsuarios.fxml"));
 
-        LoginController loginController = new LoginController();
-        loaderUsuario.setController(loginController);
+        //LoginController loginController = new LoginController();
+        //loaderUsuario.setController(loginController);
+
+        UsuariosController usuariosController = new UsuariosController();
+        loaderUsuario.setController(usuariosController);
 
         Parent root = loaderUsuario.load();
 
