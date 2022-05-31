@@ -41,6 +41,38 @@ public class SQLite {
         return false;
     }
 
+    public boolean checkEmail(Usuario usuario){
+        List<Usuario> listUsuarioLogin = new ArrayList<>();
+        ResultSet resultUsuarioLogin;
+
+        try{
+            resultUsuarioLogin = this.stm.executeQuery("select * from usuario " +
+                                                       "where email = '"+usuario.getEmail()+"'");
+
+            while(resultUsuarioLogin.next()){
+                resultUsuarioLogin.close();
+                return true;
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+
+        return false;
+    }
+
+    public void insertUsuario(Usuario cadastro){
+        try {
+            this.stm = this.conn.createStatement();
+            String sqlInsertUsuario = "insert into usuario (nome, email, senha) " +
+                                      "values ('"+cadastro.getNome()+"', '"+cadastro.getEmail()+"', '"+cadastro.getSenha()+"')";
+            this.stm.executeUpdate(sqlInsertUsuario);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
 
 
 }
