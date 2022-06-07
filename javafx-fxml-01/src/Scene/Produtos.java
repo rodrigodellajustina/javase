@@ -1,6 +1,7 @@
 package Scene;
 
 import Controller.LoginController;
+import Controller.ProdutosController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,8 +13,12 @@ public class Produtos extends Application {
     public void start(Stage stage) throws Exception {
         FXMLLoader loaderProduto = new FXMLLoader(this.getClass().getResource("layoutProdutos.fxml"));
 
-        LoginController loginController = new LoginController();
+        /*LoginController loginController = new LoginController();
         loaderProduto.setController(loginController);
+        */
+
+        ProdutosController produtosController = new ProdutosController();
+        loaderProduto.setController(produtosController);
 
         Parent root = loaderProduto.load();
         stage.setTitle("Cadastro de Produto");

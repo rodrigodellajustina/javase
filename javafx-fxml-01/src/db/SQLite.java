@@ -1,6 +1,7 @@
 package db;
 
 import Scene.Usuarios;
+import entities.Produto;
 import entities.Usuario;
 
 import java.sql.*;
@@ -68,6 +69,19 @@ public class SQLite {
             String sqlInsertUsuario = "insert into usuario (nome, email, senha) " +
                                       "values ('"+cadastro.getNome()+"', '"+cadastro.getEmail()+"', '"+cadastro.getSenha()+"')";
             this.stm.executeUpdate(sqlInsertUsuario);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void insertProduto(Produto produto){
+        try {
+            this.stm = this.conn.createStatement();
+            String sqlInsertProduto = "insert into produto " +
+                                      "(descricao, custo, preco) " +
+                                      "values " +
+                                      "('"+produto.getDescricao()+"', "+produto.getCusto()+", "+produto.getPreco()+")";
+            this.stm.executeUpdate(sqlInsertProduto);
         }catch (SQLException e){
             e.printStackTrace();
         }

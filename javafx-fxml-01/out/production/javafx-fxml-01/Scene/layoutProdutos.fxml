@@ -14,11 +14,11 @@
             <Label fx:id="lbProdutoDescricao" layoutX="51.0" layoutY="73.0" text="Descrição" />
             <Label fx:id="lbProdutoCusto" layoutX="51.0" layoutY="101.0" text="Custo" />
             <Label fx:id="lbProdutoPreco" layoutX="51.0" layoutY="132.0" text="Preço" />
-            <TextField fx:id="tdProdutoDescricao" layoutX="110.0" layoutY="69.0" prefHeight="25.0" prefWidth="327.0" />
-            <TextField fx:id="tfProdutoCusto" layoutX="110.0" layoutY="97.0" prefHeight="25.0" prefWidth="88.0" />
+            <TextField fx:id="tfProdutoDescricao" layoutX="110.0" layoutY="69.0" prefHeight="25.0" prefWidth="327.0" />
+            <TextField fx:id="tfProdutoCusto" layoutX="110.0" layoutY="97.0" onKeyPressed="#keyPressTestNumber" prefHeight="25.0" prefWidth="88.0" />
             <TextField fx:id="tfProdutoPreco" layoutX="110.0" layoutY="128.0" prefHeight="25.0" prefWidth="88.0" />
-            <Button fx:id="btSalvar" layoutX="110.0" layoutY="169.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="88.0" text="Salvar" />
-            <Button fx:id="btCancelar" layoutX="212.0" layoutY="169.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="88.0" text="Cancelar" />
+            <Button fx:id="btSalvar" layoutX="110.0" layoutY="169.0" mnemonicParsing="false" onAction="#clickSalvarProduto" prefHeight="25.0" prefWidth="88.0" text="Salvar" />
+            <Button fx:id="btCancelar" layoutX="212.0" layoutY="169.0" mnemonicParsing="false" onAction="#clickCancelarProduto" prefHeight="25.0" prefWidth="88.0" text="Cancelar" />
          </children>
       </Pane>
    </left>
