@@ -13,7 +13,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="442.0" prefWidth="737.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <top>
-      <MenuBar fx:id="menuPrincipal" disable="true" BorderPane.alignment="CENTER">
+      <MenuBar fx:id="menuPrincipal" BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="Arquivo">
             <items>
@@ -23,17 +23,23 @@
           <Menu fx:id="menuusuario" mnemonicParsing="false" text="Usuários">
             <items>
               <MenuItem fx:id="menuCadastrar" mnemonicParsing="false" onAction="#clickCadastrarUsuario" text="Cadastrar" />
+                  <MenuItem fx:id="menuAlterar" mnemonicParsing="false" text="Alterar" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Produtos">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem fx:id="menuCadastrarProduto" mnemonicParsing="false" onAction="#clickCadastrarProduto" text="Cadastrar" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Clientes">
                <items>
                   <MenuItem mnemonicParsing="false" text="About" />
                </items>
+            </Menu>
+            <Menu fx:id="menuvenda" mnemonicParsing="false" text="Vendas">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+              </items>
             </Menu>
         </menus>
       </MenuBar>

@@ -36,20 +36,28 @@ public class UsuariosController {
             int elementonomesobrenome = nomesobrenome.length;
             if (elementonomesobrenome == 1) {
                 alertSalvarUsuario.setContentText("Preenche seu sobrenome");
+                tfNomeCompleto.requestFocus();
+                tfNomeCompleto.selectRange(tfNomeCompleto.getText().length(), tfNomeCompleto.getText().length());
             }else{
                 String email = tfEmail.getText();
                 if (!email.contains("@")){
                     alertSalvarUsuario.setContentText("E-mail incorreto, favor informar um e-mail valído");
+                    tfEmail.requestFocus();
+                    tfEmail.selectRange(tfEmail.getText().length(), tfEmail.getText().length());
                 }else{
                     String senha = tfSenha.getText();
                     String senharConfirmar = tfConfirmarSenha.getText();
 
                     if (senha.isEmpty() || senharConfirmar.isEmpty()){
                         alertSalvarUsuario.setContentText("Preencha as senhas");
+                        tfSenha.requestFocus();
+                        tfSenha.selectRange(tfSenha.getText().length(), tfSenha.getText().length());
                     }else {
 
                         if (!senha.equals(senharConfirmar)) {
                             alertSalvarUsuario.setContentText("As senhas não Combinam");
+                            tfSenha.requestFocus();
+                            tfSenha.selectRange(tfSenha.getText().length(), tfSenha.getText().length());
                         } else {
                             Usuario cadusuario = new Usuario();
                             cadusuario.setEmail(tfEmail.getText());
@@ -66,6 +74,7 @@ public class UsuariosController {
                                 tfEmail.setText("");
                                 tfConfirmarSenha.setText("");
                                 tfSenha.setText("");
+                                tfNomeCompleto.requestFocus();
                             }
 
 
@@ -76,6 +85,14 @@ public class UsuariosController {
         }
 
         alertSalvarUsuario.show();
+    }
+
+    public void clickCancelarUsuario(Event e){
+        tfNomeCompleto.setText("");
+        tfEmail.setText("");
+        tfSenha.setText("");
+        tfConfirmarSenha.setText("");
+        tfNomeCompleto.requestFocus();
     }
 
 

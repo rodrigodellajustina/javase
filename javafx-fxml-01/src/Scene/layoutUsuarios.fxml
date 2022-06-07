@@ -18,7 +18,7 @@
             <TextField fx:id="tfNomeCompleto" layoutX="164.0" layoutY="69.0" prefHeight="25.0" prefWidth="318.0" />
             <TextField fx:id="tfEmail" layoutX="164.0" layoutY="105.0" prefHeight="25.0" prefWidth="318.0" />
             <Button fx:id="btSalvar" layoutX="164.0" layoutY="223.0" mnemonicParsing="false" onAction="#clickSalvarUsuario" prefHeight="25.0" prefWidth="83.0" text="Salvar" />
-            <Button fx:id="btCancelar" layoutX="256.0" layoutY="223.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0" text="Cancelar" />
+            <Button fx:id="btCancelar" layoutX="256.0" layoutY="223.0" mnemonicParsing="false" onAction="#clickCancelarUsuario" prefHeight="25.0" prefWidth="83.0" text="Cancelar" />
             <PasswordField fx:id="tfSenha" layoutX="164.0" layoutY="137.0" />
             <PasswordField fx:id="tfConfirmarSenha" layoutX="164.0" layoutY="170.0" />
          </children>
