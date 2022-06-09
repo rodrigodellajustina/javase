@@ -16,11 +16,11 @@ public class Produto {
     }
 
     public String getDescricao() {
-        return this.descricao;
+        return this.descricao.toUpperCase();
     }
 
     public void setDescricao(String descricao) {
-        this.descricao = descricao;
+        this.descricao = descricao.toUpperCase();
     }
 
     public Double getCusto() {

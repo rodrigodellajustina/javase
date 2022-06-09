@@ -44,6 +44,7 @@ public class ProdutosController {
                     produtoCadastro.setCusto(Double.valueOf(tfProdutoCusto.getText()));
                     produtoCadastro.setPreco(Double.valueOf(tfProdutoPreco.getText()));
 
+
                     SQLite dbsqlite = new SQLite();
                     dbsqlite.insertProduto(produtoCadastro);
                     alertSalvarProduto.setContentText("Produto registrado com sucesso");
@@ -55,17 +56,28 @@ public class ProdutosController {
         alertSalvarProduto.show();
     }
 
-    public void keyPressTestNumber(Event e){
-            tfProdutoCusto.textProperty().addListener(new ChangeListener<String>() {
+
+    public void keyPressOnlyNumber(Event e){
+        // Expressões Regulares.. REGEX
+        tfProdutoCusto.textProperty().addListener(new ChangeListener<String>() {
             @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue,
-                                String newValue) {
-                if (!newValue.matches("\\d*[\\.|\\,]\\d*")) {
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(!newValue.matches("\\d*[\\.|\\,]\\d*")){
                     tfProdutoCusto.setText(newValue.replaceAll("[^\\d]", ""));
-                }else{
+                }
+
+            }
+        });
+
+        tfProdutoPreco.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(!newValue.matches("\\d*[\\.|\\,]\\d*")){
+                    tfProdutoPreco.setText(newValue.replaceAll("[^\\d]", ""));
                 }
             }
         });
+
     }
 
     public void clickCancelarProduto(Event e){
