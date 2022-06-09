@@ -1,6 +1,7 @@
 package db;
 
 import Scene.Usuarios;
+import entities.Cliente;
 import entities.Estado;
 import entities.Produto;
 import entities.Usuario;
@@ -83,6 +84,18 @@ public class SQLite {
                                       "values " +
                                       "('"+produto.getDescricao()+"', "+produto.getCusto()+", "+produto.getPreco()+")";
             this.stm.executeUpdate(sqlInsertProduto);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void insertCliente(Cliente cliente){
+        try {
+            this.stm = this.conn.createStatement();
+            String sqlInsertCliente = "insert into cliente " +
+                                      "(nome, cidade, estado) " +
+                                      "values ('"+cliente.getNome()+"', '"+cliente.getCidade()+"', '"+cliente.getEstado()+"')";
+            this.stm.executeUpdate(sqlInsertCliente);
         }catch (SQLException e){
             e.printStackTrace();
         }

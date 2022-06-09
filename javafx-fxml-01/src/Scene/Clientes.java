@@ -21,7 +21,7 @@ public class Clientes extends Application {
         loaderCliente.setController(clientesController);
 
         Parent root = loaderCliente.load();
-        stage.setTitle("Casdastro de Cliente");
+        stage.setTitle("Cadastro de Cliente");
         stage.setScene(new Scene(root));
         stage.show();
     }

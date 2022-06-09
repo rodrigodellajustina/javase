@@ -16,8 +16,8 @@
             <Label fx:id="lbEstado" layoutX="66.0" layoutY="130.0" text="Estado" />
             <TextField fx:id="tfNomeCliente" layoutX="114.0" layoutY="56.0" prefHeight="25.0" prefWidth="264.0" />
             <TextField fx:id="tfCidadeCliente" layoutX="114.0" layoutY="93.0" prefHeight="25.0" prefWidth="264.0" />
-            <Button layoutX="114.0" layoutY="175.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Salvar" />
-            <Button layoutX="202.0" layoutY="175.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Cancelar" />
+            <Button fx:id="btSalvarCliente" layoutX="114.0" layoutY="175.0" mnemonicParsing="false" onAction="#clickSalvarCliente" prefHeight="25.0" prefWidth="75.0" text="Salvar" />
+            <Button fx:id="btCancelarCliente" layoutX="202.0" layoutY="175.0" mnemonicParsing="false" onAction="#clickCancelarCliente" prefHeight="25.0" prefWidth="75.0" text="Cancelar" />
             <ComboBox fx:id="cbEstadoCliente" layoutX="114.0" layoutY="126.0" prefHeight="25.0" prefWidth="65.0" />
          </children>
       </Pane>
