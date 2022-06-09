@@ -1,6 +1,7 @@
 package db;
 
 import Scene.Usuarios;
+import entities.Estado;
 import entities.Produto;
 import entities.Usuario;
 
@@ -85,6 +86,32 @@ public class SQLite {
         }catch (SQLException e){
             e.printStackTrace();
         }
+    }
+
+    public List<Estado> getEstados(){
+        List<Estado> listEstado = new ArrayList<>();
+        ResultSet rsEstado;
+
+        try{
+            rsEstado = this.stm.executeQuery("select codigouf, nome, uf from estado order by uf");
+
+            while(rsEstado.next()){
+                Estado novoEstado = new Estado();
+                novoEstado.setCodigoUf(rsEstado.getInt("codigouf"));
+                novoEstado.setNome(rsEstado.getString("nome"));
+                novoEstado.setUf(rsEstado.getString("uf"));
+                listEstado.add(novoEstado);
+            }
+
+            rsEstado.close();
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        return listEstado;
+
+
     }
 
 

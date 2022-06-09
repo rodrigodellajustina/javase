@@ -33,7 +33,7 @@
           </Menu>
             <Menu mnemonicParsing="false" text="Clientes">
                <items>
-                  <MenuItem mnemonicParsing="false" text="About" />
+                  <MenuItem fx:id="menuCadastrarCliente" mnemonicParsing="false" onAction="#clickCadastrarCliente" text="Cadastrar" />
                </items>
             </Menu>
             <Menu fx:id="menuvenda" mnemonicParsing="false" text="Vendas">

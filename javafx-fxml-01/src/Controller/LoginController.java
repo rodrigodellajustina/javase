@@ -1,5 +1,6 @@
 package Controller;
 
+import Scene.Clientes;
 import Scene.Produtos;
 import Scene.Usuarios;
 import Scene.UsuariosAlterar;
@@ -91,7 +92,11 @@ public class LoginController {
         produtos.start(new Stage());
     }
 
-
+    @FXML
+    public void clickCadastrarCliente(Event e) throws Exception {
+        Clientes clientes = new Clientes();
+        clientes.start(new Stage());
+    }
 
     @FXML
     public void clickRelogar(Event e){
