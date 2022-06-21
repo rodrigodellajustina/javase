@@ -1,14 +1,20 @@
 package Controller;
 
+import Scene.Usuarios;
+import Scene.UsuariosAlterar;
 import db.SQLite;
 import entities.Usuario;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import sun.swing.SwingLazyValue;
 
 import java.sql.SQLException;
+import java.util.Vector;
 
 
 public class UsuariosController {
@@ -24,6 +30,7 @@ public class UsuariosController {
 
     @FXML
     TextField tfConfirmarSenha;
+
 
     public void clickSalvarUsuario(Event e) throws SQLException, ClassNotFoundException {
         Alert alertSalvarUsuario = new Alert(Alert.AlertType.INFORMATION, "Clicou no salvar do usuário");

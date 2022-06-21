@@ -1,10 +1,7 @@
 package db;
 
 import Scene.Usuarios;
-import entities.Cliente;
-import entities.Estado;
-import entities.Produto;
-import entities.Usuario;
+import entities.*;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -126,6 +123,7 @@ public class SQLite {
 
 
     }
+
 
 
 

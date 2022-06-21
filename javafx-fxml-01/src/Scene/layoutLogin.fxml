@@ -23,17 +23,19 @@
           <Menu fx:id="menuusuario" mnemonicParsing="false" text="Usuários">
             <items>
               <MenuItem fx:id="menuCadastrar" mnemonicParsing="false" onAction="#clickCadastrarUsuario" text="Cadastrar" />
-                  <MenuItem fx:id="menuAlterar" mnemonicParsing="false" text="Alterar" />
+                  <MenuItem fx:id="menuManutencaoUsuarios" mnemonicParsing="false" onAction="#clickManterUsuario" text="Manutenção" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Produtos">
             <items>
               <MenuItem fx:id="menuCadastrarProduto" mnemonicParsing="false" onAction="#clickCadastrarProduto" text="Cadastrar" />
+                  <MenuItem fx:id="menuManutencaoProduto" mnemonicParsing="false" text="Manutenção" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Clientes">
                <items>
                   <MenuItem fx:id="menuCadastrarCliente" mnemonicParsing="false" onAction="#clickCadastrarCliente" text="Cadastrar" />
+                  <MenuItem fx:id="menuManutencaoClientes" mnemonicParsing="false" text="Manutenção" />
                </items>
             </Menu>
             <Menu fx:id="menuvenda" mnemonicParsing="false" text="Vendas">

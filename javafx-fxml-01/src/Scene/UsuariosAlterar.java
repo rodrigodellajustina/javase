@@ -1,6 +1,7 @@
 package Scene;
 
 import Controller.LoginController;
+import Controller.UsuariosAlterarController;
 import Controller.UsuariosController;
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -17,8 +18,8 @@ public class UsuariosAlterar extends Application {
         //LoginController loginController = new LoginController();
         //loaderUsuario.setController(loginController);
 
-        UsuariosController usuariosController = new UsuariosController();
-        loaderUsuario.setController(usuariosController);
+        UsuariosAlterarController usuariosAlterarController = new UsuariosAlterarController();
+        loaderUsuario.setController(usuariosAlterarController);
 
         Parent root = loaderUsuario.load();
 

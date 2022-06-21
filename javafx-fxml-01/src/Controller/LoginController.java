@@ -1,9 +1,6 @@
 package Controller;
 
-import Scene.Clientes;
-import Scene.Produtos;
-import Scene.Usuarios;
-import Scene.UsuariosAlterar;
+import Scene.*;
 import db.SQLite;
 import entities.Usuario;
 import javafx.event.Event;
@@ -97,6 +94,19 @@ public class LoginController {
         Clientes clientes = new Clientes();
         clientes.start(new Stage());
     }
+
+    @FXML
+    public void clickAlterarUsuario(Event e) throws Exception {
+        UsuariosAlterar usuariosalterar = new UsuariosAlterar();
+        usuariosalterar.start(new Stage());
+    }
+
+    @FXML
+    public void clickManterUsuario(Event e) throws Exception {
+        UsuariosManutencao usuariomanutencao = new UsuariosManutencao();
+        usuariomanutencao.start(new Stage());
+    }
+
 
     @FXML
     public void clickRelogar(Event e){
