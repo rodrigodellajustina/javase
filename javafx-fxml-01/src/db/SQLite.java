@@ -148,7 +148,33 @@ public class SQLite {
         return listUsuario;
     }
 
+    public void excluirUsuario(Usuario usuario){
 
+        try {
+            this.stm = this.conn.createStatement();
+            String exclusao = "delete from usuario where email = '"+usuario.getEmail()+"'";
+            this.stm.executeUpdate(exclusao);
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+
+    }
+    public void atualizarUsuario(Usuario usuario, String emailantigo){
+        try {
+            this.stm = this.conn.createStatement();
+            String update = "update usuario " +
+                    "        set nome  = '"+usuario.getNome()+"', " +
+                    "            email = '"+usuario.getEmail()+"' " +
+                    "        where email = '"+emailantigo+"'";
+            this.stm.executeUpdate(update);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+
+    }
 
 
 }
