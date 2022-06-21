@@ -124,6 +124,30 @@ public class SQLite {
 
     }
 
+    public List<Usuario> getAllUsuarios(){
+        List<Usuario> listUsuario = new ArrayList<>();
+        ResultSet rsUsuario;
+
+        try{
+            String sql = "select nome, email from usuario order by nome";
+            rsUsuario = this.stm.executeQuery(sql);
+
+            while(rsUsuario.next()){
+                Usuario usuarioCadastrado = new Usuario();
+                usuarioCadastrado.setNome(rsUsuario.getString("nome"));
+                usuarioCadastrado.setEmail(rsUsuario.getString("email"));
+                listUsuario.add(usuarioCadastrado);
+            }
+
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+
+        return listUsuario;
+    }
+
 
 
 
