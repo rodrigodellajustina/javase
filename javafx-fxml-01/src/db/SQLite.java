@@ -176,5 +176,32 @@ public class SQLite {
 
     }
 
+    public List<Cliente> getClienteforCodigo(Integer codigo){
+        List<Cliente> listCliente = new ArrayList<>();
+        ResultSet rsCliente;
+
+        try{
+            String sql = "select codigo, nome, cidade, estado from cliente where codigo = "+codigo+"";
+            rsCliente = this.stm.executeQuery(sql);
+
+            while(rsCliente.next()){
+                Cliente clienteCadastrado = new Cliente();
+                clienteCadastrado.setNome(rsCliente.getString("nome"));
+                clienteCadastrado.setEstado(rsCliente.getString("estado"));
+                clienteCadastrado.setCidade(rsCliente.getString("cidade"));
+                listCliente.add(clienteCadastrado);
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+
+        return listCliente;
+    }
+
+
+
+
 
 }

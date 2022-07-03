@@ -40,7 +40,7 @@
             </Menu>
             <Menu fx:id="menuvenda" mnemonicParsing="false" text="Vendas">
               <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem fx:id="menuVendas1" mnemonicParsing="false" onAction="#clickAbrirSistemaVenda" text="Vendas" />
               </items>
             </Menu>
         </menus>
@@ -60,7 +60,7 @@
                <font>
                   <Font name="Calibri" size="12.0" />
                </font></Button>
-            <Label layoutX="675.0" layoutY="386.0" text="V 0.01" />
+            <Label layoutX="690.0" layoutY="386.0" text="V 0.01" />
             <PasswordField fx:id="tfSenha" layoutX="283.0" layoutY="142.0" prefHeight="25.0" prefWidth="169.0" />
             <Label fx:id="lbUsuarioLogado" layoutX="377.0" layoutY="386.0" prefHeight="17.0" prefWidth="280.0" />
          </children>

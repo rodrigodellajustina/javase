@@ -107,6 +107,17 @@ public class LoginController {
         usuariomanutencao.start(new Stage());
     }
 
+    @FXML
+    public void clickAbrirVendas(Event e) throws Exception{
+        Vendas vendas = new Vendas();
+        vendas.start(new Stage());
+    }
+
+    @FXML
+    public void clickAbrirSistemaVenda(Event e) throws Exception{
+        Venda venda = new Venda();
+        venda.start(new Stage());
+    }
 
     @FXML
     public void clickRelogar(Event e){
