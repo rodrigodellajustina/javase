@@ -1,6 +1,7 @@
 package db;
 
 import Scene.Usuarios;
+import com.sun.security.ntlm.Client;
 import entities.*;
 
 import java.sql.*;
@@ -176,8 +177,8 @@ public class SQLite {
 
     }
 
-    public List<Cliente> getClienteforCodigo(Integer codigo){
-        List<Cliente> listCliente = new ArrayList<>();
+    public Cliente getClienteforCodigo(Integer codigo){
+        Cliente clienteCadastrado = new Cliente();
         ResultSet rsCliente;
 
         try{
@@ -185,11 +186,9 @@ public class SQLite {
             rsCliente = this.stm.executeQuery(sql);
 
             while(rsCliente.next()){
-                Cliente clienteCadastrado = new Cliente();
                 clienteCadastrado.setNome(rsCliente.getString("nome"));
                 clienteCadastrado.setEstado(rsCliente.getString("estado"));
                 clienteCadastrado.setCidade(rsCliente.getString("cidade"));
-                listCliente.add(clienteCadastrado);
             }
 
         }catch (SQLException e){
@@ -197,9 +196,30 @@ public class SQLite {
         }
 
 
-        return listCliente;
+        return clienteCadastrado;
     }
 
+    public Produto getProdutoforCodigo(Integer codigo){
+        Produto produtoCadastrado = new Produto();
+        ResultSet rsProduto;
+
+        try{
+            String sql = "select descricao, custo, preco from produto where codigo = "+codigo+"";
+            rsProduto = this.stm.executeQuery(sql);
+
+            while(rsProduto.next()){
+                produtoCadastrado.setDescricao(rsProduto.getString("descricao"));
+                produtoCadastrado.setCusto(rsProduto.getDouble("custo"));
+                produtoCadastrado.setPreco(rsProduto.getDouble("preco"));
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+
+        return produtoCadastrado;
+    }
 
 
 

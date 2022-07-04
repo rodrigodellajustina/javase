@@ -1,6 +1,8 @@
 package Scene;
 
+import Controller.ClientesController;
 import Controller.LoginController;
+import Controller.VendaController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,8 +15,12 @@ public class Venda extends Application {
 
         FXMLLoader loaderVenda = new FXMLLoader(this.getClass().getResource("layoutVenda.fxml"));
 
-        LoginController loginController = new LoginController();
+        /*LoginController loginController = new LoginController();
         loaderVenda.setController(loginController);
+        */
+
+        VendaController vendaController = new VendaController();
+        loaderVenda.setController(vendaController);
 
         Parent root = loaderVenda.load();
         stage.setTitle("Sistema de Vendas");

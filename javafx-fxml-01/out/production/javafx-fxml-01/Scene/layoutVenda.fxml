@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="397.0" prefWidth="603.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <Pane prefHeight="100.0" prefWidth="603.0" BorderPane.alignment="CENTER">
@@ -19,18 +18,18 @@
             <Label fx:id="lbProduto" layoutX="31.0" layoutY="60.0" text="Produto" />
             <TextField fx:id="tfCliente" layoutX="81.0" layoutY="21.0" prefHeight="25.0" prefWidth="112.0" />
             <TextField fx:id="tfProduto" layoutX="81.0" layoutY="56.0" prefHeight="25.0" prefWidth="112.0" />
-            <Button fx:id="btCliente" layoutX="200.0" layoutY="20.0" mnemonicParsing="false">
+            <Button fx:id="btProcurarCliente" layoutX="200.0" layoutY="20.0" mnemonicParsing="false" onAction="#clickProcurarCliente">
                <graphic>
-                  <ImageView fx:id="btProcurarCliente" fitHeight="18.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="18.0" fitWidth="24.0" onDragDetected="#clickProcurarCliente" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@img/procura.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="btProcurarProduto" layoutX="200.0" layoutY="55.0" mnemonicParsing="false">
+            <Button fx:id="btProcurarProduto" layoutX="200.0" layoutY="55.0" mnemonicParsing="false" onAction="#clickProcurarProduto">
                <graphic>
-                  <ImageView fitHeight="18.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="18.0" fitWidth="20.0" onDragDetected="#clickProcurarProduto" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@img/procura.png" />
                      </image>
@@ -45,18 +44,18 @@
    <center>
       <Pane prefHeight="294.0" prefWidth="603.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView layoutX="29.0" layoutY="36.0" prefHeight="206.0" prefWidth="546.0">
+            <TableView fx:id="twprodutos" layoutX="29.0" layoutY="36.0" prefHeight="206.0" prefWidth="546.0">
               <columns>
-                <TableColumn fx:id="twProdutoVenda" prefWidth="75.0" text="Código" />
-                <TableColumn prefWidth="213.0" text="Descrição" />
-                  <TableColumn prefWidth="75.0" text="Quantidade" />
-                  <TableColumn prefWidth="75.0" text="Unitário" />
-                  <TableColumn prefWidth="75.0" text="Total" />
+                <TableColumn fx:id="tcCodigo" prefWidth="75.0" text="Codigo" />
+                <TableColumn fx:id="tcDescricao" prefWidth="213.0" text="Descrição" />
+                  <TableColumn fx:id="tcQuantidade" prefWidth="75.0" text="Quantidade" />
+                  <TableColumn fx:id="tcUnitario" prefWidth="75.0" text="Unitário" />
+                  <TableColumn fx:id="tcTotal" prefWidth="75.0" text="Total" />
               </columns>
             </TableView>
             <Button fx:id="btGravarVenda" layoutX="29.0" layoutY="253.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="74.0" text="Gravar" />
             <Button fx:id="btCancelarVenda" layoutX="118.0" layoutY="253.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Cancelar" />
-            <Button fx:id="btIncluirProduto" layoutX="29.0" layoutY="2.0" mnemonicParsing="false">
+            <Button fx:id="btIncluirProduto" layoutX="29.0" layoutY="2.0" mnemonicParsing="false" onAction="#clickIncluirProduto">
                <graphic>
                   <ImageView fx:id="btincluirProduto" disable="true" fitHeight="20.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -65,9 +64,9 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="70.0" layoutY="2.0" mnemonicParsing="false">
+            <Button fx:id="btRemoverProduto" layoutX="70.0" layoutY="2.0" mnemonicParsing="false" onAction="#clickRemoverProduto">
                <graphic>
-                  <ImageView fx:id="btExcluirProduto" disable="true" fitHeight="21.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgRemoverProduto" disable="true" fitHeight="21.0" fitWidth="29.0" onDragDetected="#clickRemoverProduto" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@img/excluir.png" />
                      </image>

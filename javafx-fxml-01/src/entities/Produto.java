@@ -3,7 +3,7 @@ package entities;
 public class Produto {
 
     private Integer codigo;
-    private String descricao;
+    private String descricao = "";
     private Double custo;
     private Double preco;
 
