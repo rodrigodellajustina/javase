@@ -1,6 +1,5 @@
 package Scene;
 
-import Controller.ClientesController;
 import Controller.LoginController;
 import Controller.VendaController;
 import javafx.application.Application;
@@ -17,7 +16,7 @@ public class Venda extends Application {
 
         /*LoginController loginController = new LoginController();
         loaderVenda.setController(loginController);
-        */
+         */
 
         VendaController vendaController = new VendaController();
         loaderVenda.setController(vendaController);

@@ -178,33 +178,32 @@ public class SQLite {
     }
 
     public Cliente getClienteforCodigo(Integer codigo){
-        Cliente clienteCadastrado = new Cliente();
+        Cliente clientecadastrado = new Cliente();
         ResultSet rsCliente;
 
         try{
-            String sql = "select codigo, nome, cidade, estado from cliente where codigo = "+codigo+"";
+            String sql="select codigo, nome, cidade, estado from cliente where codigo = "+codigo+"";
             rsCliente = this.stm.executeQuery(sql);
 
             while(rsCliente.next()){
-                clienteCadastrado.setNome(rsCliente.getString("nome"));
-                clienteCadastrado.setEstado(rsCliente.getString("estado"));
-                clienteCadastrado.setCidade(rsCliente.getString("cidade"));
+                clientecadastrado.setNome(rsCliente.getString("nome"));
+                clientecadastrado.setEstado(rsCliente.getString("estado"));
+                clientecadastrado.setCidade(rsCliente.getString("cidade"));
             }
 
         }catch (SQLException e){
             e.printStackTrace();
         }
 
-
-        return clienteCadastrado;
+        return clientecadastrado;
     }
 
-    public Produto getProdutoforCodigo(Integer codigo){
+    public Produto getProdutoForCodigo(Integer codigo){
         Produto produtoCadastrado = new Produto();
         ResultSet rsProduto;
 
         try{
-            String sql = "select descricao, custo, preco from produto where codigo = "+codigo+"";
+            String sql = "select codigo, descricao, custo, preco from produto where codigo = "+codigo+"";
             rsProduto = this.stm.executeQuery(sql);
 
             while(rsProduto.next()){
@@ -217,9 +216,9 @@ public class SQLite {
             e.printStackTrace();
         }
 
-
         return produtoCadastrado;
     }
+
 
 
 

@@ -1,37 +1,25 @@
 package entities;
 
 public class VendaProduto {
-    public Integer  codigo;
-    public String   descricao;
-    public Integer  quantidade;
-    public Double   unitario;
-    public Double   total;
+    public Integer codigo;
+    public String  descricao;
+    public Integer quantidade;
+    public Double  unitario;
+    public Double  total;
 
-    public void setCodigo(Integer codigoProduto) {
-        this.codigo = codigoProduto;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setDescricao(String descricaoProduto) {
-        this.descricao = descricaoProduto;
+    public Integer getCodigo() {
+        return codigo;
     }
 
-    public void setTotal(double total) {
-        this.total = total;
-    }
-
-    public void setUnitario(double unitario) {
-        this.unitario = unitario;
-    }
-
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
-    }
-
-    public double getTotal() {
+    public Double getTotal() {
         return total;
     }
 
-    public double getUnitario() {
+    public Double getUnitario() {
         return unitario;
     }
 
@@ -39,16 +27,28 @@ public class VendaProduto {
         return quantidade;
     }
 
-    public Integer getCodigo() {
-        return codigo;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public void setCodigo(Integer codigo) {
+        this.codigo = codigo;
+    }
+
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public void setTotal(Double total) {
+        this.total = total;
+    }
+
+    public void setUnitario(Double unitario) {
+        this.unitario = unitario;
     }
 
     public Double calcularTotal(){
         return this.quantidade * this.unitario;
     }
-}
 
+}

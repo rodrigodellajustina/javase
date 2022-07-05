@@ -20,7 +20,7 @@
             <TextField fx:id="tfProduto" layoutX="81.0" layoutY="56.0" prefHeight="25.0" prefWidth="112.0" />
             <Button fx:id="btProcurarCliente" layoutX="200.0" layoutY="20.0" mnemonicParsing="false" onAction="#clickProcurarCliente">
                <graphic>
-                  <ImageView fitHeight="18.0" fitWidth="24.0" onDragDetected="#clickProcurarCliente" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="18.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@img/procura.png" />
                      </image>
@@ -29,7 +29,7 @@
             </Button>
             <Button fx:id="btProcurarProduto" layoutX="200.0" layoutY="55.0" mnemonicParsing="false" onAction="#clickProcurarProduto">
                <graphic>
-                  <ImageView fitHeight="18.0" fitWidth="20.0" onDragDetected="#clickProcurarProduto" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="18.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@img/procura.png" />
                      </image>
@@ -54,7 +54,7 @@
               </columns>
             </TableView>
             <Button fx:id="btGravarVenda" layoutX="29.0" layoutY="253.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="74.0" text="Gravar" />
-            <Button fx:id="btCancelarVenda" layoutX="118.0" layoutY="253.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Cancelar" />
+            <Button fx:id="btCancelarVenda" layoutX="118.0" layoutY="253.0" mnemonicParsing="false" onAction="#clickCancelarVenda" prefHeight="25.0" prefWidth="73.0" text="Cancelar" />
             <Button fx:id="btIncluirProduto" layoutX="29.0" layoutY="2.0" mnemonicParsing="false" onAction="#clickIncluirProduto">
                <graphic>
                   <ImageView fx:id="btincluirProduto" disable="true" fitHeight="20.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
@@ -66,7 +66,7 @@
             </Button>
             <Button fx:id="btRemoverProduto" layoutX="70.0" layoutY="2.0" mnemonicParsing="false" onAction="#clickRemoverProduto">
                <graphic>
-                  <ImageView fx:id="imgRemoverProduto" disable="true" fitHeight="21.0" fitWidth="29.0" onDragDetected="#clickRemoverProduto" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgRemoverProduto" disable="true" fitHeight="21.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@img/excluir.png" />
                      </image>
